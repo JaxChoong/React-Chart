@@ -1,9 +1,14 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ChartComponent from './chartComponent';
 import './App.css';
 
 function ChartPage() {
+  const navigate = useNavigate();
+  function handleBack() {
+    navigate('/');
+  }
   const languageTime = [
     { language: 'javascript', time: 2 },
     { language: 'python', time: 3 },
@@ -18,7 +23,7 @@ function ChartPage() {
     <>
     <div style={{display:'flex',width:'100%',height:'100%'}}>
       <div>
-        <button className='backButton'>
+        <button className='backButton' onClick={handleBack}>
           Back
         </button>
       </div>
