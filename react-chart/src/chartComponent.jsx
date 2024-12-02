@@ -24,7 +24,7 @@ const ChartComponent = () => {
         labels: data.map(row => row.language),
         datasets: [
           {
-            label: 'Time spent on languages',
+            label: 'Time spent on languages (hours)',
             data: data.map(row => row.time),
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
