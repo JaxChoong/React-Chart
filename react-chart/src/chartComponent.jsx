@@ -42,6 +42,20 @@ const ChartComponent = () => {
         scales: {
           y: {
             beginAtZero: true,
+            grid: {
+              display: false,
+            },
+            ticks: {
+              display: true,
+            },
+          },
+          x: {
+            grid: {
+              display: false,
+            },
+            ticks: {
+              display: true,
+            },
           },
         },
       },

@@ -2,7 +2,6 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import ChartComponent from './chartComponent';
 import './App.css';
-import { Button } from '@chakra-ui/react';
 
 function App() {
   const [count, setCount] = useState(() => {
@@ -22,7 +21,7 @@ function App() {
           Back
         </button>
       </div>
-      <div style={{width:'60%',justifyContent:'center',alignContent:'center',display:'flex',padding:'auto',margin:'auto'}}>
+      <div style={{width:'70%',justifyContent:'center',alignContent:'center',display:'flex',margin:'80px auto'}}>
         <ChartComponent />
       </div>
     </div>
