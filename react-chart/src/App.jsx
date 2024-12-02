@@ -9,9 +9,21 @@ function App() {
     return savedCount ? Number(savedCount) : 0;
   });
 
+  const languageTime = [
+    { language: 'javascript', time: 2 },
+    { language: 'python', time: 3 },
+    { language: 'java', time: 6 },
+    { language: 'c#', time: 1 },
+    { language: 'c++', time: 5 },
+    { language: 'go', time: 1 },
+    { language: 'ruby', time: 3 },
+    { language: 'swift', time: 2 },
+    { language: 'kotlin', time: 2 },
+    { language: 'typescript', time: 0 },
+  ];
   useEffect(() => {
-    localStorage.setItem('saveCount', count);
-  }, [count]);
+    localStorage.setItem('languageTime', JSON.stringify(languageTime));
+  }, [languageTime]);
 
   return (
     <>

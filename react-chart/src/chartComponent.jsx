@@ -6,15 +6,9 @@ const ChartComponent = () => {
   const chartInstanceRef = useRef(null);
 
   useEffect(() => {
-    const data = [
-      { year: 2010, count: 10 },
-      { year: 2011, count: 20 },
-      { year: 2012, count: 15 },
-      { year: 2013, count: 25 },
-      { year: 2014, count: 22 },
-      { year: 2015, count: 30 },
-      { year: 2016, count: 28 },
-    ];
+    // Retrieve and parse the data from localStorage
+    const storedData = localStorage.getItem('languageTime');
+    const data = storedData ? JSON.parse(storedData) : [];
 
     const ctx = chartRef.current.getContext('2d');
 
@@ -27,11 +21,11 @@ const ChartComponent = () => {
     chartInstanceRef.current = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: data.map(row => row.year),
+        labels: data.map(row => row.language),
         datasets: [
           {
-            label: 'Acquisitions by year',
-            data: data.map(row => row.count),
+            label: 'Time spent on languages',
+            data: data.map(row => row.time),
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -40,6 +34,9 @@ const ChartComponent = () => {
               'rgba(153, 102, 255, 0.2)',
               'rgba(255, 159, 64, 0.2)',
               'rgba(199, 199, 199, 0.2)',
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
             ],
             borderColor: [
               'rgba(255, 99, 132, 1)',
@@ -49,6 +46,9 @@ const ChartComponent = () => {
               'rgba(153, 102, 255, 1)',
               'rgba(255, 159, 64, 1)',
               'rgba(199, 199, 199, 1)',
+              'rgba(255, 99, 132, 1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
             ],
             borderWidth: 1,
           },
