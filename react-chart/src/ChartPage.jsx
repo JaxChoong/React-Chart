@@ -4,20 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import ChartComponent from './chartComponent';
 import './App.css';
 
+
 function ChartPage() {
   const navigate = useNavigate();
   function handleBack() {
     navigate('/');
   }
-  const languageTime = [
-    { language: 'javascript', time: 2 },
-    { language: 'python', time: 3 },
-    { language: 'java', time: 6 },
-    { language: 'c++', time: 5 },
-  ];
-  useEffect(() => {
-    localStorage.setItem('languageTime', JSON.stringify(languageTime));
-  }, [languageTime]);
+
 
   return (
     <>

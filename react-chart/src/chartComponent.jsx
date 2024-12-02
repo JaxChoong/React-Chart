@@ -1,14 +1,21 @@
 import React, { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
+
 const ChartComponent = () => {
   const chartRef = useRef(null);
   const chartInstanceRef = useRef(null);
-
   useEffect(() => {
     // Retrieve and parse the data from localStorage
-    const storedData = localStorage.getItem('languageTime');
-    const data = storedData ? JSON.parse(storedData) : [];
+    // get totalTimes from localstorage
+    let totalTimes = JSON.parse(localStorage.getItem('totalTimes'));
+    // go through totalTimes and convert it to an array of dicts
+    let storedData = Object.entries(totalTimes).map(([language, time]) => ({
+        language,
+        time,
+    }));
+
+    const data = storedData;
 
     const ctx = chartRef.current.getContext('2d');
 
@@ -24,7 +31,7 @@ const ChartComponent = () => {
         labels: data.map(row => row.language),
         datasets: [
           {
-            label: 'Time spent on languages (hours)',
+            label: 'Time spent on languages (seconds)',
             data: data.map(row => row.time),
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
