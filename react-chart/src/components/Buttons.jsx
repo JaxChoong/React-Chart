@@ -10,7 +10,8 @@ const Buttons = ({ onStop, onStart, onReset, onSelectActivity }) => {
     onSelectActivity(activity); 
   };
 
-  const handleGraphClick = () => {
+  const handleGraphClick = (event) => {
+    handleButtonClick(event);
     navigate('/chart');
   };
 
