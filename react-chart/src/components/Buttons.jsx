@@ -1,6 +1,8 @@
 import React from "react";
 import "../App.css";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+
 
 const Buttons = ({ onStop, onStart, onReset, onSelectActivity }) => {
   const navigate = useNavigate();
@@ -14,7 +16,6 @@ const Buttons = ({ onStop, onStart, onReset, onSelectActivity }) => {
     handleButtonClick(event);
     navigate('/chart');
   };
-
   return (
     <>
     <div className="activity-buttons-container">
@@ -22,6 +23,7 @@ const Buttons = ({ onStop, onStart, onReset, onSelectActivity }) => {
       <button value="Java" onClick={handleButtonClick}>Java</button>
       <button value="C++" onClick={handleButtonClick}>C++</button>
       <button value="Python" onClick={handleButtonClick}>Python</button>
+      <button value="Go" onClick={handleButtonClick}>Go</button>
     </div>
     <div className = "action-buttons-container">
       <button id="stop-button" onClick={onStop}>Stop</button>

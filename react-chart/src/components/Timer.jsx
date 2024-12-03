@@ -27,24 +27,58 @@ const Timer = () => {
   }, [totalTimes]);
 
   const handleStart = () => {
-    if (activity === null) { 
+    handleReset();
+    if (!activity) return;
+    setIsRunning(true);
+    if (totalTimes[activity] && seconds > totalTimes[activity]) {
+      const totalTimes1 = seconds - totalTimes[activity];
+      setTotalTimes((prev) => ({
+        ...prev,
+        [activity]: totalTimes1,
+      }))
+    }
+    else if (totalTimes[activity] && seconds <= totalTimes[activity]) {
+      const totalTimes2 = totalTimes[activity] + seconds;
+      setTotalTimes((prev) => ({
+        ...prev,
+        [activity]: totalTimes2,
+      }))
     }
     else{
-      setIsRunning(true);
+      setTotalTimes((prev) => ({
+        ...prev,
+        [activity]: (seconds || 0),
+      }));
     }
   }
 
   const handleStop = () => {
+    handleReset();
+    if (!activity) return;
     setIsRunning(false);
-    if (activity) {
+    if (totalTimes[activity] && seconds > totalTimes[activity]) {
+      const totalTimes3 = seconds - totalTimes[activity];
       setTotalTimes((prev) => ({
         ...prev,
-        [activity]: (prev[activity] || 0) + seconds,
+        [activity]: totalTimes3,
+      }))
+    }
+    else if (totalTimes[activity] && seconds <= totalTimes[activity]) {
+      const totalTimes4 = totalTimes[activity] + seconds;
+      setTotalTimes((prev) => ({
+        ...prev,
+        [activity]: totalTimes4,
+      }))
+    }
+    else{
+      setTotalTimes((prev) => ({
+        ...prev,
+        [activity]: (seconds || 0),
       }));
     }
   };
 
-  const handleReset = () => {
+  const handleHardReset = () => {
     setIsRunning(false);
     setSeconds(0);
     setActivity(null);
@@ -52,17 +86,16 @@ const Timer = () => {
     setTotalTimes({});
   };
 
-  const handleActivityChange = (newActivity) => {
-    if (activity) {
-      setTotalTimes((prev) => ({
-        ...prev,
-        [activity]: (prev[activity] || 0) + seconds,
-      }));
-    }
-    setActivity(newActivity);
+  const handleReset = () => {
+    setIsRunning(false);
     setSeconds(0);
-    setIsRunning(true);
   };
+
+  const handleActivityChange = (newActivity) => {
+    handleReset();  
+    setActivity(newActivity);
+  };
+
   const formatTime = (seconds) => {
     const hours = Math.floor(seconds / 3600);
     const mins = Math.floor((seconds % 3600) / 60);
@@ -83,7 +116,7 @@ const Timer = () => {
     <Buttons
         onStop={handleStop}
         onStart={handleStart}
-        onReset={handleReset}
+        onReset={handleHardReset}
         onSelectActivity={handleActivityChange}
       />
     </>
