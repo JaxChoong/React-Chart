@@ -33,55 +33,9 @@ const ChartComponent = () => {
           {
             label: 'Time spent on languages (seconds)',
             data: data.map(row => row.time),
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
-              'rgba(199, 199, 199, 0.2)',
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-              'rgba(153, 102, 255, 1)',
-              'rgba(255, 159, 64, 1)',
-              'rgba(199, 199, 199, 1)',
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-            ],
-            borderWidth: 1,
           },
         ],
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            grid: {
-              display: false,
-            },
-            ticks: {
-              display: true,
-            },
-          },
-          x: {
-            grid: {
-              display: false,
-            },
-            ticks: {
-              display: true,
-            },
-          },
-        },
-      },
+      }
     });
 
     // Cleanup function to destroy the chart instance when the component unmounts
